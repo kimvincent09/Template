@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('photo', 'PhotoController@index');
+Route::get('photo/create', 'PhotoController@create');
+Route::post('photo', 'PhotoController@store');
+Route::get('photo/{id}', 'PhotoController@show');
+Route::get('photo/{id}/edit', 'PhotoController@edit');
+Route::put('photo/{id}', 'PhotoController@update');
+Route::delete('photo/{id}', 'PhotoController@destroy');
