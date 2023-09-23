@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('photo', 'PhotoController@index');
-Route::get('photo/create', 'PhotoController@create');
-Route::post('photo', 'PhotoController@store');
-Route::get('photo/{id}', 'PhotoController@show');
-Route::get('photo/{id}/edit', 'PhotoController@edit');
-Route::put('photo/{id}', 'PhotoController@update');
-Route::delete('photo/{id}', 'PhotoController@destroy');
+// Route::get('photo', 'App\Http\Controllers\PhotoController@index'); //old way
+Route::get('photo', [PhotoController::class, 'index']); // best approach
+Route::get('photo/create', [PhotoController::class, 'create']);
+Route::post('photo', [PhotoController::class, 'store']);
+Route::get('photo/{id}', [PhotoController::class, 'show']);
+Route::get('photo/{id}/edit', [PhotoController::class, 'edit']);
+Route::put('photo/{id}', [PhotoController::class, 'update']);
+Route::delete('photo/{id}', [PhotoController::class, 'destroy']);
